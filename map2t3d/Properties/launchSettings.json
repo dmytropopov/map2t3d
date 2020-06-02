@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "map2t3d": {
+      "commandName": "Project",
+      "commandLineArgs": "d:\\Downloads\\TrenchBroom-Win32-v2020.1-Release\\unnamed.t3d",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

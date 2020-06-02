@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "map2t3d", "map2t3d\map2t3d.csproj", "{A75B3AE8-6DE6-4BDB-9F01-1E5B1BF45C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapToT3d.Tests", "MapToT3d.Tests\MapToT3d.Tests.csproj", "{930FF1DB-D0CC-4F79-A5F7-CB469C9C4D95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A75B3AE8-6DE6-4BDB-9F01-1E5B1BF45C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75B3AE8-6DE6-4BDB-9F01-1E5B1BF45C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75B3AE8-6DE6-4BDB-9F01-1E5B1BF45C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75B3AE8-6DE6-4BDB-9F01-1E5B1BF45C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{930FF1DB-D0CC-4F79-A5F7-CB469C9C4D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930FF1DB-D0CC-4F79-A5F7-CB469C9C4D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930FF1DB-D0CC-4F79-A5F7-CB469C9C4D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930FF1DB-D0CC-4F79-A5F7-CB469C9C4D95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B8A64FC-3BED-4063-BF4C-7BFF1B75C987}
+	EndGlobalSection
+EndGlobal
