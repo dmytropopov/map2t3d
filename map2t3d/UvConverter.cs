@@ -13,12 +13,7 @@ namespace map2t3d
     {
         private const double MINIMUM_DIVISOR = 0.00000000001;
 
-        public static (double[] textureU, double[] textureV, double[] origin) CalculateTextureUV(
-            Face poly, 
-            double textureWidth = 256, 
-            double textureHeight = 256, 
-            double textureUTiling = 1,
-            double textureVTiling = 1)
+        public static (double[] textureU, double[] textureV, double[] origin) CalculateTextureUV(Face poly)
         {
             var textureU = new double[3];
             var textureV = new double[3];
@@ -51,8 +46,8 @@ namespace map2t3d
             pFile <<  -( -dVO * dVF + dScaleVO + dt -1) << "\n"; 
             */
 
-            var dUF = textureUTiling;
-            var dVF = textureVTiling;
+            var dUF = poly.Material.UTiling;
+            var dVF = poly.Material.VTiling;
             const double dUO = 0;
             const double dVO = 0;
 
@@ -221,8 +216,8 @@ namespace map2t3d
             p_grad_u *= 256
             p_grad_v *= 256
             */
-            p_grad_u = Vector.VectorMul(textureWidth, p_grad_u);
-            p_grad_v = Vector.VectorMul(textureHeight, p_grad_v);
+            p_grad_u = Vector.VectorMul(poly.Material.TextureSizeU, p_grad_u);
+            p_grad_v = Vector.VectorMul(poly.Material.TextureSizeV, p_grad_v);
 
             //
             // Calculate Normals. These are ignored anyway but make an effort...

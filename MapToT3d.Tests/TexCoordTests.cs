@@ -19,6 +19,13 @@ namespace MapToT3d.Tests
         #region poly1
         private static readonly Face poly1 = new Face
         {
+            Material = new MaterialInfo
+            {
+                UTiling = 2,
+                VTiling = 8,
+                TextureSizeU = 256,
+                TextureSizeV = 256
+            },
             FaceVertices = new List<FaceVertex> {
                 new FaceVertex {
                     Vertex =  new double[] { 90.0, 26.0, 0.0 },
@@ -41,6 +48,12 @@ namespace MapToT3d.Tests
         #region poly2
         private static readonly Face poly2 = new Face
         {
+            Material = new MaterialInfo {
+                UTiling = 1,
+                VTiling = 1,
+                TextureSizeU = 256,
+                TextureSizeV = 256
+            },
             FaceVertices = new List<FaceVertex> {
                 new FaceVertex {
                     Vertex =  new double[] { 272, 32, 64 },
@@ -67,8 +80,8 @@ namespace MapToT3d.Tests
             {
                 get
                 {
-                    yield return new TestCaseData(poly1, origin1, textureU1, textureV1, 2, 8).SetName("poly1");
-                    yield return new TestCaseData(poly2, origin2, textureU2, textureV2, 1, 1).SetName("poly2");
+                    yield return new TestCaseData(poly1, origin1, textureU1, textureV1).SetName("poly1");
+                    yield return new TestCaseData(poly2, origin2, textureU2, textureV2).SetName("poly2");
                 }
             }
         }
@@ -76,16 +89,12 @@ namespace MapToT3d.Tests
         //[Test]
         //[TestCaseSource("AllCases")]
         [TestCaseSource(typeof(UvTestCasesFactory), "TestCases")]
-        public void UvTest(Face poly, double[] origin, double[] textureU, double[] textureV, double textureUTiling, double textureVTiling)
+        public void UvTest(Face poly, double[] origin, double[] textureU, double[] textureV)
         {
             // Arrange
 
             // Act
-            var result = UvConverter.CalculateTextureUV(
-                poly: poly,
-                textureUTiling: textureUTiling,
-                textureVTiling: textureVTiling
-            );
+            var result = UvConverter.CalculateTextureUV(poly: poly);
 
             // Assert
             Assert.IsTrue(NearlyEqual(result.origin, origin));

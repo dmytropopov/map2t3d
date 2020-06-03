@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using map2t3d.Config;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -22,11 +19,13 @@ namespace map2t3d
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddSingleton<ObjReader>();
-                    services.AddSingleton<T3dWriter>();
+                    services.AddTransient<ObjReader>();
+                    services.AddTransient<T3dWriter>();
                     services.AddHostedService<Worker>();
 
-                    services.Configure<ArgsConfig>((conf) => conf.FileName = args[0] );
+                    services.Configure<ArgsConfig>(conf => conf.FileName = args[0] );
+                    services.Configure<FoldersOptions>(hostContext.Configuration.GetSection("FoldersConfig"));
+                    services.Configure<TexturesConversionOptions>(hostContext.Configuration.GetSection("TexturesConversion"));
                 });
     }
 }

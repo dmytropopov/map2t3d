@@ -1,4 +1,5 @@
-﻿using map2t3d.Data.ObjData;
+﻿using map2t3d.Config;
+using map2t3d.Data.ObjData;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -29,9 +30,7 @@ namespace map2t3d
 
         public void Write(StreamWriter streamWriter)
         {
-            using var reader = new StreamReader(Path.ChangeExtension(_args.FileName, "obj"));
-
-            var brushes = _objReader.Read(reader);
+            var brushes = _objReader.Read(Path.ChangeExtension(_args.FileName, "obj"));
             //Console.WriteLine(JsonConvert.SerializeObject(brushes, Formatting.Indented));
 
             streamWriter.WriteLine("Begin Map");
@@ -52,7 +51,9 @@ End Actor");
 
                 foreach (var poly in brush.Faces)
                 {
-                    streamWriter.WriteLine("\t\t\tBegin Polygon Flags=1082163200");
+                    string textureString = string.IsNullOrEmpty(poly.Material.MaterialName) ? ""
+                        : $" Texture={poly.Material.MaterialName.Replace("/", ".", false, CultureInfo.InvariantCulture)}";
+                    streamWriter.WriteLine($"\t\t\tBegin Polygon{textureString} Flags=1082163200");
 
                     var (textureU, textureV, origin) = UvConverter.CalculateTextureUV(poly);
 
@@ -63,7 +64,7 @@ End Actor");
                     streamWriter.WriteLine($"\t\t\t\tTextureV {FormatVector(textureV)}");
                     streamWriter.WriteLine($"\t\t\t\tPan      U=0 V=0");
 
-                    foreach(var vertex in poly.FaceVertices)
+                    foreach (var vertex in poly.FaceVertices)
                     {
                         streamWriter.WriteLine($"\t\t\t\tVertex   {FormatVector(vertex.Vertex)}");
                     }

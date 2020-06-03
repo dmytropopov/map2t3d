@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace map2t3d
+namespace map2t3d.Config
 {
     public class ArgsConfig
     {
