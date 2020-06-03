@@ -48,7 +48,11 @@ namespace MapToT3d.Tests
             // Arrange
 
             // Act
-            var result = T3dWriter.CalculateTextureUV(poly);
+            var result = UvConverter.CalculateTextureUV(
+                poly: poly,
+                textureUTiling: 2,
+                textureVTiling: 8
+            );
 
             // Assert
             Assert.IsTrue(NearlyEqual(result.origin, origin));
