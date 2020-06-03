@@ -32,7 +32,7 @@ namespace map2t3d
             using var reader = new StreamReader(Path.ChangeExtension(_args.FileName, "obj"));
 
             var brushes = _objReader.Read(reader);
-            Console.WriteLine(JsonConvert.SerializeObject(brushes, Formatting.Indented));
+            //Console.WriteLine(JsonConvert.SerializeObject(brushes, Formatting.Indented));
 
             streamWriter.WriteLine("Begin Map");
             streamWriter.WriteLine(@"Begin Actor Class=LevelInfo Name=LevelInfo0

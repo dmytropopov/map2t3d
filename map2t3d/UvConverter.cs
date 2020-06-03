@@ -111,9 +111,9 @@ namespace map2t3d
             // 
             // Coords
             //
-            Vector pt0 = new Vector(poly.FaceVertices[0].Vertex[0], poly.FaceVertices[0].Vertex[1], poly.FaceVertices[0].Vertex[2]);
-            Vector pt1 = new Vector(poly.FaceVertices[1].Vertex[0], poly.FaceVertices[1].Vertex[1], poly.FaceVertices[1].Vertex[2]);
-            Vector pt2 = new Vector(poly.FaceVertices[2].Vertex[0], poly.FaceVertices[2].Vertex[1], poly.FaceVertices[2].Vertex[2]);
+            Vector pt0 = new Vector(poly.FaceVertices[0].Vertex[0], -poly.FaceVertices[0].Vertex[1], poly.FaceVertices[0].Vertex[2]);
+            Vector pt1 = new Vector(poly.FaceVertices[1].Vertex[0], -poly.FaceVertices[1].Vertex[1], poly.FaceVertices[1].Vertex[2]);
+            Vector pt2 = new Vector(poly.FaceVertices[2].Vertex[0], -poly.FaceVertices[2].Vertex[1], poly.FaceVertices[2].Vertex[2]);
             //ASE::GeomPoint pt0 = ase.geomobjects.at(i).mesh.vertex_list[ase.geomobjects.at(i).mesh.face_list[v + 0]];
             //ASE::GeomPoint pt1 = ase.geomobjects.at(i).mesh.vertex_list[ase.geomobjects.at(i).mesh.face_list[v + 1]];
             //ASE::GeomPoint pt2 = ase.geomobjects.at(i).mesh.vertex_list[ase.geomobjects.at(i).mesh.face_list[v + 2]];

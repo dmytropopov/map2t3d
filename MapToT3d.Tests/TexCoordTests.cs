@@ -1,7 +1,9 @@
 using map2t3d;
 using map2t3d.Data.Obj;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,15 +21,15 @@ namespace MapToT3d.Tests
         {
             FaceVertices = new List<FaceVertex> {
                 new FaceVertex {
-                    Vertex =  new double[] { 90.0, -26.0, 0.0 },
+                    Vertex =  new double[] { 90.0, 26.0, 0.0 },
                     Uv = new double[] { 0, 0 }
                 },
                 new FaceVertex {
-                    Vertex =  new double[] { 94.0, -30.0, 0.0 },
+                    Vertex =  new double[] { 94.0, 30.0, 0.0 },
                     Uv = new double[] { 0.024500000000000001, 0 }
                 },
                 new FaceVertex {
-                    Vertex =  new double[] { 92.381399999999999, -30.0, 16.885700000000000 },
+                    Vertex =  new double[] { 92.381399999999999, 30.0, 16.885700000000000 },
                     Uv = new double[] { 0.024500000000000001, 0.057500000000000002 }
                 }
             }
@@ -36,22 +38,53 @@ namespace MapToT3d.Tests
         private static double[] textureU1 = { 1.5608292212076709, 1.5751707787923253, 0.14961524706981269 };
         private static double[] textureV1 = { 0.33271970934524098, -0.33271970934524076, -6.9420551045235772 };
         #endregion
-
-        public static object[] AllCases = {
-            new object[] { poly1, origin1, textureU1, textureV1 }
+        #region poly2
+        private static Face poly2 = new Face
+        {
+            FaceVertices = new List<FaceVertex> {
+                new FaceVertex {
+                    Vertex =  new double[] { 272, 32, 64 },
+                    Uv = new double[] { -0.12500000000000000, 4.9882999999999997 }
+                },
+                new FaceVertex {
+                    Vertex =  new double[] { 272, -16, 64 },
+                    Uv = new double[] { -0.87500000000000000, 4.9882999999999997 }
+                },
+                new FaceVertex {
+                    Vertex =  new double[] { 208, -16, 64 },
+                    Uv = new double[] { -0.87500000000000000, 3.9883000000000002 }
+                }
+            }
         };
+        private static double[] origin2 = { 208.74879999999999, 40.000000000000007, 64.000000000000000 };
+        private static double[] textureU2 = { -0.00000000000000000, 4.0000000000000000, 0.00000000000000000 };
+        private static double[] textureV2 = { -3.9999999999999982, 0.00000000000000000, 0.00000000000000000 };
+        #endregion
 
-        [Test]
-        [TestCaseSource("AllCases")]
-        public void Test1(Face poly, double[] origin, double[] textureU, double[] textureV)
+        public class UvTestCasesFactory
+        {
+            public static IEnumerable TestCases
+            {
+                get
+                {
+                    yield return new TestCaseData(poly1, origin1, textureU1, textureV1, 2, 8).SetName("poly1");
+                    yield return new TestCaseData(poly2, origin2, textureU2, textureV2, 1, 1).SetName("poly2");
+                }
+            }
+        }
+
+        //[Test]
+        //[TestCaseSource("AllCases")]
+        [TestCaseSource(typeof(UvTestCasesFactory), "TestCases")]
+        public void UvTest(Face poly, double[] origin, double[] textureU, double[] textureV, double textureUTiling, double textureVTiling)
         {
             // Arrange
 
             // Act
             var result = UvConverter.CalculateTextureUV(
                 poly: poly,
-                textureUTiling: 2,
-                textureVTiling: 8
+                textureUTiling: textureUTiling,
+                textureVTiling: textureVTiling
             );
 
             // Assert
@@ -62,7 +95,7 @@ namespace MapToT3d.Tests
 
         public static bool NearlyEqual(double f1, double f2)
         {
-            return Math.Abs(f1 - f2) < 0.000000001;
+            return Math.Abs(f1 - f2) < 0.00001;
         }
 
         public static bool NearlyEqual(double[] f1, double[] f2)
