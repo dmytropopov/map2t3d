@@ -54,29 +54,18 @@ End Actor");
                 {
                     streamWriter.WriteLine("\t\t\tBegin Polygon Flags=1082163200");
 
-                    var uvs = UvConverter.CalculateTextureUV(poly);
+                    var (textureU, textureV, origin) = UvConverter.CalculateTextureUV(poly);
 
-                    //var origin = poly.FaceVertices[0].Vertex;
                     var normal = poly.FaceVertices[0].Normal;
-                    //var textureU = new double[] { 
-                    //    0, // always 0
-                    //    +00000.980785, // normalize?
-                    //    -00000.195091 // normalize?
-                    //};
-                    //var textureV = new double[] {
-                    //    0, // always 0
-                    //    -00000.195091, // normalize?
-                    //    -00000.980785 // normalize?
-                    //};
-                    streamWriter.WriteLine($"\t\t\t\tOrigin   {formatVector(uvs.origin)}");
-                    streamWriter.WriteLine($"\t\t\t\tNormal   {formatVector(normal)}");
-                    streamWriter.WriteLine($"\t\t\t\tTextureU {formatVector(uvs.textureU)}");
-                    streamWriter.WriteLine($"\t\t\t\tTextureV {formatVector(uvs.textureV)}");
+                    streamWriter.WriteLine($"\t\t\t\tOrigin   {FormatVector(origin)}");
+                    streamWriter.WriteLine($"\t\t\t\tNormal   {FormatVector(normal)}");
+                    streamWriter.WriteLine($"\t\t\t\tTextureU {FormatVector(textureU)}");
+                    streamWriter.WriteLine($"\t\t\t\tTextureV {FormatVector(textureV)}");
                     streamWriter.WriteLine($"\t\t\t\tPan      U=0 V=0");
 
                     foreach(var vertex in poly.FaceVertices)
                     {
-                        streamWriter.WriteLine($"\t\t\t\tVertex   {formatVector(vertex.Vertex)}");
+                        streamWriter.WriteLine($"\t\t\t\tVertex   {FormatVector(vertex.Vertex)}");
                     }
 
                     streamWriter.WriteLine("\t\t\tEnd Polygon");
@@ -116,14 +105,14 @@ End PolyList");
             streamWriter.WriteLine("End Actor");
         }
 
-        private string formatFloat(double value)
+        private string FormatFloat(double value)
         {
             return value.ToString(floatFormatString, CultureInfo.InvariantCulture);
         }
 
-        private string formatVector(double[] vector)
+        private string FormatVector(double[] vector)
         {
-            return string.Join(",", vector.Select(s => formatFloat(s)));
+            return string.Join(",", vector.Select(s => FormatFloat(s)));
         }
     }
 }

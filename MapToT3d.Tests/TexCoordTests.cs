@@ -17,7 +17,7 @@ namespace MapToT3d.Tests
         }
 
         #region poly1
-        private static Face poly1 = new Face
+        private static readonly Face poly1 = new Face
         {
             FaceVertices = new List<FaceVertex> {
                 new FaceVertex {
@@ -34,12 +34,12 @@ namespace MapToT3d.Tests
                 }
             }
         };
-        private static double[] origin1 = { 129.05697870452533, 66.816326530612301, 18.354021739130442 };
-        private static double[] textureU1 = { 1.5608292212076709, 1.5751707787923253, 0.14961524706981269 };
-        private static double[] textureV1 = { 0.33271970934524098, -0.33271970934524076, -6.9420551045235772 };
+        private static readonly double[] origin1 = { 129.05697870452533, 66.816326530612301, 18.354021739130442 };
+        private static readonly double[] textureU1 = { 1.5608292212076709, 1.5751707787923253, 0.14961524706981269 };
+        private static readonly double[] textureV1 = { 0.33271970934524098, -0.33271970934524076, -6.9420551045235772 };
         #endregion
         #region poly2
-        private static Face poly2 = new Face
+        private static readonly Face poly2 = new Face
         {
             FaceVertices = new List<FaceVertex> {
                 new FaceVertex {
@@ -56,9 +56,9 @@ namespace MapToT3d.Tests
                 }
             }
         };
-        private static double[] origin2 = { 208.74879999999999, 40.000000000000007, 64.000000000000000 };
-        private static double[] textureU2 = { -0.00000000000000000, 4.0000000000000000, 0.00000000000000000 };
-        private static double[] textureV2 = { -3.9999999999999982, 0.00000000000000000, 0.00000000000000000 };
+        private static readonly double[] origin2 = { 208.74879999999999, 40.000000000000007, 64.000000000000000 };
+        private static readonly double[] textureU2 = { -0.00000000000000000, 4.0000000000000000, 0.00000000000000000 };
+        private static readonly double[] textureV2 = { -3.9999999999999982, 0.00000000000000000, 0.00000000000000000 };
         #endregion
 
         public class UvTestCasesFactory

@@ -13,9 +13,9 @@ namespace map2t3d
     {
         private readonly ILogger<ObjReader> _logger;
 
-        private List<double[]> vertices = new List<double[]>();
-        private List<double[]> normals = new List<double[]>();
-        private List<double[]> uvs = new List<double[]>();
+        private readonly List<double[]> vertices = new List<double[]>();
+        private readonly List<double[]> normals = new List<double[]>();
+        private readonly List<double[]> uvs = new List<double[]>();
 
         public ObjReader(ILogger<ObjReader> logger)
         {
@@ -95,8 +95,10 @@ namespace map2t3d
 
                         // reverse clockwiseness of the vertices after normal flip
                         var reversedTail = face.FaceVertices.Skip(1).Reverse();
-                        var reversedAll = new List<FaceVertex>();
-                        reversedAll.Add(face.FaceVertices[0]);
+                        var reversedAll = new List<FaceVertex>
+                        {
+                            face.FaceVertices[0]
+                        };
                         reversedAll.AddRange(reversedTail);
                         face.FaceVertices = reversedAll;
 
