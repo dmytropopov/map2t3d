@@ -1,5 +1,5 @@
 using map2t3d;
-using map2t3d.Data.Obj;
+using map2t3d.Data.ObjData;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System;

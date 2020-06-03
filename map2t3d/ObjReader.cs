@@ -1,4 +1,4 @@
-﻿using map2t3d.Data.Obj;
+﻿using map2t3d.Data.ObjData;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -22,13 +22,13 @@ namespace map2t3d
             _logger = logger;
         }
 
-        public List<Obj> Read(StreamReader reader)
+        public List<MeshObject> Read(StreamReader reader)
         {
-            List<Obj> list = new List<Obj>();
+            List<MeshObject> list = new List<MeshObject>();
 
             string line;
             int lineNumber = 0;
-            var currentObject = new Obj();
+            var currentObject = new MeshObject();
             while ((line = reader.ReadLine()) != null)
             {
                 var words = line.Trim().Split(" ");
@@ -60,7 +60,7 @@ namespace map2t3d
                         });
                         break;
                     case "O":
-                        currentObject = new Obj()
+                        currentObject = new MeshObject()
                         {
                             Name = words[1]
                         };

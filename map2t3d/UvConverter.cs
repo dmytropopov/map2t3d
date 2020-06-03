@@ -1,4 +1,4 @@
-﻿using map2t3d.Data.Obj;
+﻿using map2t3d.Data.ObjData;
 using System;
 using System.Collections.Generic;
 using Vector3D;
@@ -9,7 +9,7 @@ namespace map2t3d
     /// <summary>
     /// Algorithm borrowed from ASE2T3D sources
     /// </summary>
-    public class UvConverter
+    public static class UvConverter
     {
         private const double MINIMUM_DIVISOR = 0.00000000001;
 

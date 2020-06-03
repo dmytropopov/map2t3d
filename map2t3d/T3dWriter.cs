@@ -1,4 +1,4 @@
-﻿using map2t3d.Data.Obj;
+﻿using map2t3d.Data.ObjData;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -81,7 +81,7 @@ End Actor");
         }
 
 
-        private void WriteDummyBrush(StreamWriter streamWriter)
+        private static void WriteDummyBrush(StreamWriter streamWriter)
         {
             streamWriter.WriteLine($"Begin Actor Class=Brush Name=Brush");
             streamWriter.WriteLine("\tBegin Brush Name=Brush");
@@ -105,12 +105,12 @@ End PolyList");
             streamWriter.WriteLine("End Actor");
         }
 
-        private string FormatFloat(double value)
+        private static string FormatFloat(double value)
         {
             return value.ToString(floatFormatString, CultureInfo.InvariantCulture);
         }
 
-        private string FormatVector(double[] vector)
+        private static string FormatVector(double[] vector)
         {
             return string.Join(",", vector.Select(s => FormatFloat(s)));
         }
