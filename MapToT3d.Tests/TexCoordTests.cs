@@ -104,7 +104,7 @@ namespace MapToT3d.Tests
 
         public static bool NearlyEqual(double f1, double f2)
         {
-            return Math.Abs(f1 - f2) < 0.00001;
+            return Math.Abs(f1 - f2) < 0.0000001;
         }
 
         public static bool NearlyEqual(double[] f1, double[] f2)
