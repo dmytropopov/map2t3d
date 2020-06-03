@@ -1,15 +1,9 @@
 ﻿using map2t3d.Config;
-using map2t3d.Data.ObjData;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Vector3D;
 
 namespace map2t3d
 {
