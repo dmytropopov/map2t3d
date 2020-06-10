@@ -187,6 +187,12 @@ namespace map2t3d
             try
             {
                 var textureNameParts = material.MaterialName.Split("/");
+                if (textureNameParts.Length != 2)
+                {
+                    _logger.LogWarning("Texture name in invalid format: {textureName}", material.MaterialName);
+                    return;
+                }
+
                 var textureFolder = Path.Combine(_foldersOptions.TexturesFolder, textureNameParts[0]);
                 var textureFileName = textureNameParts[1] + ".*";
                 var fileNameFound = Directory.GetFiles(textureFolder, textureFileName).FirstOrDefault();
